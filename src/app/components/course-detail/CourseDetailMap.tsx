@@ -29,23 +29,44 @@ export default function CourseDetailMap({ segments, isReturn } : CourseDetailMap
       const difficultyInfo = getSegemntDifficulty(segment.difficultyLevel);
       const mainColorCss = changeDifficultyColorCss2Hex(difficultyInfo);
       const anchorPoint = isMobile() ? new window.naver.maps.Point(8, 8) : new window.naver.maps.Point(10, 10);
+      const courseLocationAnchorPoint = isMobile() ? new window.naver.maps.Point(-12, 8) : new window.naver.maps.Point(-14, 10);
+      const startPointLatLng = new window.naver.maps.LatLng(segment.startPoint.lat, segment.startPoint.lng);
       
       new window.naver.maps.Marker({
         map: naverMap,
-        position: new window.naver.maps.LatLng(segment.startPoint.lat, segment.startPoint.lng),
+        position: startPointLatLng,
         icon: {
           content: `<div class="course-marker" style="background-color: ${mainColorCss}">${index+1}</div>`,
           anchor: anchorPoint,
         }
       });
+      // 하단의 텍스트도 추가한다.
+      new window.naver.maps.Marker({
+        map: naverMap,
+        position: startPointLatLng,
+        icon: {
+          content: `<span class="course-marker-text">${segment.startPoint.name}</span>`,
+          anchor: courseLocationAnchorPoint,
+        }
+      });
       
       // 마지막 마커 표시 (단, 원점회귀일 경우 표시하지 않는다)
       if (index + 1 === segments.length && !isReturn) {
+        const endPointLatLng = new window.naver.maps.LatLng(segment.endPoint.lat, segment.endPoint.lng);
+
         new window.naver.maps.Marker({
           map: naverMap,
-          position: new window.naver.maps.LatLng(segment.endPoint.lat, segment.endPoint.lng),
+          position: endPointLatLng,
           icon: {
             content: `<div class="course-marker" style="background-color: ${mainColorCss}">${index+1}</div>`
+          }
+        });
+        new window.naver.maps.Marker({
+          map: naverMap,
+          position: endPointLatLng,
+          icon: {
+            content: `<span class="course-marker-text">${segment.endPoint.name}</span>`,
+            anchor: courseLocationAnchorPoint,
           }
         });
       }
