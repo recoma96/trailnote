@@ -1,4 +1,5 @@
 import CourseHeader from "@/app/components/course-detail/CourseHeader";
+import CourseMainPicture from "@/app/components/course-detail/CourseMainPicture";
 import { getCourse, getCourseCodes } from "@/app/lib/api/courses";
 import { getCourseDifficulty } from "@/app/lib/constants/difficulty";
 
@@ -26,6 +27,7 @@ export default async function CourseDetailPage({
         address={course.address}
         difficultyInfo={difficultyInfo}
       />
+      <CourseMainPicture mainPictures={course.mainPictures} />
     </main>
   );
 }
