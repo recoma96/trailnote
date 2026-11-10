@@ -1,8 +1,8 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --layerBackground: #e1fff6;
-  --layerBorder: #00a783;
+  --background: #f5f1e8;
+  --foreground: #514a3e;
+  --layerBackground: #fff4c2;
+  --layerBorder: #c6a85e;
 }
 
 * {
@@ -17,10 +17,10 @@ html {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #181611;
     --foreground: #ededed;
-    --layerBackground: #18261f;
-    --layerBorder: #00a783;
+    --layerBackground: #302a1c;
+    --layerBorder: #78643b;
   }
 }
 
