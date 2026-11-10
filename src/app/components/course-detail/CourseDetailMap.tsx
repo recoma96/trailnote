@@ -3,13 +3,14 @@
 import "@/app/components/course-detail/course-detail-map.css";
 import { GetCourseResponse } from "@/app/lib/api/types";
 import { changeDifficultyColorCss2Hex, getSegemntDifficulty } from "@/app/lib/constants/difficulty";
+import { LOCATION_MARKER_ICONS } from "@/app/lib/constants/map";
 import { isMobile } from "@/app/lib/utils";
 import Script from "next/script";
 import { useRef } from "react";
 
-type CourseDetailMapProps = Pick<GetCourseResponse, "segments" | "isReturn">;
+type CourseDetailMapProps = Pick<GetCourseResponse, "segments" | "isReturn" | "locations">;
 
-export default function CourseDetailMap({ segments, isReturn } : CourseDetailMapProps) {
+export default function CourseDetailMap({ segments, isReturn, locations } : CourseDetailMapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
 
   const initMap = () =>  {
@@ -78,6 +79,30 @@ export default function CourseDetailMap({ segments, isReturn } : CourseDetailMap
         path: segment.trackPoints.map((trackPoint) => new window.naver.maps.LatLng(trackPoint.lat, trackPoint.lng)),
       })
     });
+
+
+    // 명소 관련 정보도 마커로 표시
+    locations.forEach((location) => {
+      const latLng = new window.naver.maps.LatLng(location.lat, location.lng);
+      const markerWidth = isMobile() ? 30 : 40;
+      const markerHeight = markerWidth * 1.2;
+      const iconUrl = Object.hasOwn(LOCATION_MARKER_ICONS, location.type)
+        ? LOCATION_MARKER_ICONS[location.type]
+        : "/markers/default.svg";
+
+      new window.naver.maps.Marker({
+        map: naverMap,
+        position: latLng,
+        title: location.name,
+        icon: {
+          url: iconUrl,
+          size: new maps.Size(markerWidth, markerHeight),
+          scaledSize: new maps.Size(markerWidth, markerHeight),
+          anchor: new maps.Point(markerWidth / 2, markerHeight * 46 / 48),
+        },
+      });
+    });
+
   }
 
   return (
