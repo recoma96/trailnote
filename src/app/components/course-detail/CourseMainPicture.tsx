@@ -14,8 +14,8 @@ export default async function CourseMainPicture({ mainPictures } : CourseMainPic
           <Image
             src={image.url}
             alt={image.summary}
-            width={4000}
-            height={2252}
+            width={image.width}
+            height={image.height}
             className="picture-item"
           />
           <figcaption>{image.summary}</figcaption>
