@@ -43,3 +43,14 @@ function isSegmentDifficultyLabel(level: number): level is SegmentDifficultyLabe
 export function getSegemntDifficulty(level: number): DifficultyInfo {
   return SEGMENT_DIFFICULTIES[isSegmentDifficultyLabel(level) ? level : 0];
 }
+
+export function changeDifficultyColorCss2Hex(info: DifficultyInfo): string {
+  const variableName = info.color.slice(4, -1).trim();
+
+  // CSS 변수에 지정된 실제 색상 값
+  const rgbColor = getComputedStyle(document.documentElement)
+    .getPropertyValue(variableName)
+    .trim();
+  
+  return rgbColor;
+}

@@ -33,7 +33,7 @@ export default async function CourseDetailPage({
       <hr style={{ margin: "30px 0"  }} />
       <CourseIntroduction courseDescriptions={course.courseDescriptions} />
       <hr style={{ margin: "30px 0"  }} />
-      <CourseMap segments={course.segments} />
+      <CourseMap segments={course.segments} isReturn={course.isReturn} />
     </main>
   );
 }
