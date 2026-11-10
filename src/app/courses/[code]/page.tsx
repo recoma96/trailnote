@@ -1,3 +1,4 @@
+import CourseHeader from "@/app/components/course-detail/CourseHeader";
 import { getCourse, getCourseCodes } from "@/app/lib/api/courses";
 import { getCourseDifficulty } from "@/app/lib/constants/difficulty";
 
@@ -19,8 +20,12 @@ export default async function CourseDetailPage({
   const difficultyInfo = getCourseDifficulty(course.courseLevel);
 
   return (
-    <div className="page">
-      <h1 style={{ color: difficultyInfo.color  }}>코스명 {course.title}</h1>
-    </div>
+    <main className="page">
+      <CourseHeader
+        title={course.title}
+        address={course.address}
+        difficultyInfo={difficultyInfo}
+      />
+    </main>
   );
 }

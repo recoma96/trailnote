@@ -1,0 +1,20 @@
+import { GetCourseResponse } from "@/app/lib/api/types";
+import "@/app/components/course-detail/course-header.css";
+import { DifficultyInfo } from "@/app/lib/constants/difficulty";
+
+type CourseHeaderProps = Pick<GetCourseResponse, "title" | "address"> & {
+  difficultyInfo: DifficultyInfo,
+};
+
+export default async function CourseHeader({ title, address, difficultyInfo } : CourseHeaderProps) {
+  return (
+    <div className="main-layer">
+      <div className="title-marker">⛰️</div>
+      <div>
+        <h1 className="title">{title}</h1>
+        <hr />
+      </div>
+      <h2 className="address">{address}</h2>
+    </div>
+  );
+}
