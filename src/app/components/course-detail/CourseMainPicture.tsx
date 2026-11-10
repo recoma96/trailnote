@@ -16,6 +16,7 @@ export default async function CourseMainPicture({ mainPictures } : CourseMainPic
             alt={image.summary}
             width={image.width}
             height={image.height}
+            loading="eager"
             className="picture-item"
           />
           <figcaption>{image.summary}</figcaption>
