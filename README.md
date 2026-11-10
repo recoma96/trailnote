@@ -14,8 +14,9 @@ Next.js App Router 기반 앱입니다. TypeScript, 일반 CSS, ESLint를 사용
 | --- | --- | --- |
 | `DATA_API_BASE_URL` | O | 코스 데이터(JSON)가 있는 S3 주소. 끝에 `/`를 붙이지 않습니다. |
 
-코스 페이지는 SSG로 생성되므로, 이 값은 **빌드할 때** 사용됩니다. 값이 없으면 빌드가 실패합니다.
-빌드할 때 아래 두 경로를 요청합니다.
+코스 페이지는 SSG로 생성되므로, 프로덕션에서는 이 값이 **빌드할 때** 사용됩니다. 값이 없으면 빌드가 실패합니다.
+개발 서버(`npm run dev`)에서는 코스 페이지에 접속할 때마다 사용되므로 로컬 개발에도 필요합니다.
+요청하는 경로는 아래 두 가지입니다.
 
 - `{DATA_API_BASE_URL}/courses/codes.json`: 빌드할 코스 코드 목록
 - `{DATA_API_BASE_URL}/courses/{code}.json`: 코스 상세 정보
@@ -52,20 +53,34 @@ npm run dev
 
 ```bash
 npm run lint
+npm run typecheck
 npm run build
 npm start
 ```
 
-빌드 과정에서 TypeScript 타입도 검사합니다. 기본 템플릿은 `next/font/google`로
-Geist 폰트를 가져오므로 최초 개발 실행과 빌드 시 Google Fonts에 접근할 수 있어야 합니다.
+빌드 과정에서도 TypeScript 타입을 검사합니다. `src/app/layout.tsx`는 `next/font/google`로
+Gowun Batang 폰트를 가져오므로 최초 개발 실행과 빌드 시 Google Fonts에 접근할 수 있어야 합니다.
+
+## CI
+
+`main` 브랜치 대상 PR과 `main` push 시 GitHub Actions(`.github/workflows/CI.yaml`)가 실행됩니다.
+
+- **코드 검사**: `npm run lint`, `npm run typecheck` (PR, `main` push)
+- **빌드 검증**: `npm run build`로 S3 데이터를 가져와 SSG 빌드가 성공하는지 확인 (PR에서만)
+
+변경된 파일이 모두 Markdown(`*.md`)이면 CI를 실행하지 않습니다.
 
 ## 주요 파일
 
 - `src/app/page.tsx`: 홈 페이지
 - `src/app/layout.tsx`: 공통 레이아웃과 메타데이터
 - `src/app/globals.css`: 전역 스타일
-- `src/app/page.css`: 홈 페이지 스타일 (일반 CSS)
+- `src/app/courses/[code]/page.tsx`: 코스 상세 페이지 (SSG)
+- `src/app/difficulty/page.tsx`: 난이도 소개 페이지
+- `src/app/lib/api/`: S3 데이터 요청 함수(`index.ts`, `courses.ts`)와 응답 타입(`types.ts`)
+- `src/app/components/`: 공통 컴포넌트
 - `public/`: 정적 파일
+- `.github/workflows/CI.yaml`: CI 설정
 - `next.config.ts`: Next.js 설정
 - `eslint.config.mjs`: ESLint 설정
 - `tsconfig.json`: TypeScript 설정 (`@/*`는 `src/*` 경로)
