@@ -4,11 +4,18 @@ on:
   pull_request:
     branches: [main]
     types: [opened, synchronize, reopened]
+    paths-ignore:
+      - "**/*.md"
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**/*.md"
 
 permissions:
   contents: read
 
 concurrency:
+  # TODO: push엔 PR 번호가 없어 main push끼리 같은 그룹이 되어 서로 취소됨 → `pull_request.number || github.ref`로 변경 검토
   group: ${{ github.workflow }}-pr-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
@@ -38,3 +45,32 @@ jobs:
 
       - name: Check TypeScript
         run: npm run typecheck
+
+  build:
+    name: 빌드 검증
+    # main push 시에는 Vercel 배포 빌드가 같은 검증을 하므로 PR에서만 실행
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: "26"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # SSG: 빌드 시점에 S3 JSON을 가져와 모든 코스 페이지를 생성
+      - name: Build
+        run: npm run build
+        env:
+          DATA_API_BASE_URL: ${{ vars.DATA_API_BASE_URL }}
+          NEXT_TELEMETRY_DISABLED: "1" # vercel에 사용통게 전송 X
