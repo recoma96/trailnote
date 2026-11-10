@@ -1,5 +1,6 @@
 export interface DifficultyInfo {
   code: string;
+  level: number;
   label: string;
   color: string;
   content: string;
@@ -8,23 +9,23 @@ export interface DifficultyInfo {
 
 export type CourseDifficultyLabel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 export const COURSE_DIFFICULTIES: Record<CourseDifficultyLabel, DifficultyInfo>  = {
-  0: {code: 'UNKNOWN', label: '알 수 없음', color: 'var(--course-difficulty-0)', content: ''  },
-  1: {code: 'EASY', label: '입문', color: 'var(--course-difficulty-1)', content: '' },
-  2: {code: 'BEGINNER', label: '쉬움', color: 'var(--course-difficulty-2)', content: '' },
-  3: {code: 'INTERMEDIATE', label: '보통', color: 'var(--course-difficulty-3)', content: '' },
-  4: {code: 'ADVANCED', label: '약간 어려움', color: 'var(--course-difficulty-4)', content: '' },
-  5: {code: 'HARD', label: '어려움', color: 'var(--course-difficulty-5)', content: '' },
-  6: {code: 'CHALLENGER', label: '매우어려움', color: 'var(--course-difficulty-6)', content: '' },
-  7: {code: 'SEMI-EXPERT', label: '산악사고주의', color: 'var(--course-difficulty-7)', content: '' },
+  0: {code: 'UNKNOWN', level: 0, label: '알 수 없음', color: 'var(--course-difficulty-0)', content: ''  },
+  1: {code: 'EASY', level: 1, label: '입문', color: 'var(--course-difficulty-1)', content: '' },
+  2: {code: 'BEGINNER', level: 2, label: '쉬움', color: 'var(--course-difficulty-2)', content: '' },
+  3: {code: 'INTERMEDIATE', level: 3, label: '보통', color: 'var(--course-difficulty-3)', content: '' },
+  4: {code: 'ADVANCED', level: 4, label: '약간 어려움', color: 'var(--course-difficulty-4)', content: '' },
+  5: {code: 'HARD', level: 5, label: '어려움', color: 'var(--course-difficulty-5)', content: '' },
+  6: {code: 'CHALLENGER', level: 6, label: '매우어려움', color: 'var(--course-difficulty-6)', content: '' },
+  7: {code: 'SEMI-EXPERT', level: 7, label: '산악사고주의', color: 'var(--course-difficulty-7)', content: '' },
 }
 
 export type SegmentDifficultyLabel = 0 | 1 | 2 | 3 | 4;
 export const SEGMENT_DIFFICULTIES: Record<SegmentDifficultyLabel, DifficultyInfo> = {
-  0: {code: 'UNKNOWN', label: '알 수 없음', color: 'var(--segment-difficulty-0)', content: ''  },
-  1: {code: 'EASY', label: '쉬움', color: 'var(--segment-difficulty-1)', content: '' },
-  2: {code: 'NORMAL', label: '보통', color: 'var(--segment-difficulty-2)', content: '' },
-  3: {code: 'HARD', label: '어려움', color: 'var(--segment-difficulty-3)', content: '' },
-  4: {code: 'VERH-HARD', label: '매우어려움', color: 'var(--segment-difficulty-4)', content: '' },
+  0: {code: 'UNKNOWN', level: 0, label: '알 수 없음', color: 'var(--segment-difficulty-0)', content: ''  },
+  1: {code: 'EASY', level: 1, label: '쉬움', color: 'var(--segment-difficulty-1)', content: '' },
+  2: {code: 'NORMAL', level: 2, label: '보통', color: 'var(--segment-difficulty-2)', content: '' },
+  3: {code: 'HARD', level: 3, label: '어려움', color: 'var(--segment-difficulty-3)', content: '' },
+  4: {code: 'VERH-HARD', level: 4, label: '매우어려움', color: 'var(--segment-difficulty-4)', content: '' },
 }
 
 function isCourseDifficultyLabel(level: number): level is CourseDifficultyLabel { // bool 타입으로 리턴하되 level을 CourseDifficultyLabel로 바꾸게 한다.
