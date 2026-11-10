@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Gowun_Batang, Nanum_Pen_Script, Lexend } from "next/font/google";
+import { Gowun_Batang, Nanum_Pen_Script, Lexend, Gothic_A1 } from "next/font/google";
 import "./globals.css";
 
 const gowunBatang = Gowun_Batang({
@@ -20,6 +20,11 @@ const lexend = Lexend({
   weight: ["400"],
 });
 
+const gothicA1 = Gothic_A1({
+  variable: "--font-gothic-a1",
+  subsets: ["latin"],
+  weight: ["400", "600"]
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -31,7 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="ko"
     >
-      <body className={`${gowunBatang.variable} ${nanumPenScript.variable} ${lexend.variable}`}>{children}</body>
+      <body className={`${gowunBatang.variable} ${nanumPenScript.variable} ${lexend.variable} ${gothicA1.variable}`}>{children}</body>
     </html>
   );
 }

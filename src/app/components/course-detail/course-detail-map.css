@@ -20,6 +20,17 @@
   font-weight: 800;
 }
 
+.course-detail-map .course-marker-text {
+  font-size: 0.8rem;
+  font-family: var(--font-gothic-a1);
+  font-weight: 600;
+
+  -webkit-text-stroke: 2px white;
+  paint-order: stroke fill;
+
+    white-space: nowrap !important;
+    word-break: keep-all;  
+}
 
 
 @media (max-width: 768px) {
@@ -29,7 +40,11 @@
   .course-detail-map .course-marker {
     width: 16px;
     height: 16px;
-    font-size: 0.6em;
+    font-size: 0.6rem;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  }
+
+  .course-detail-map .course-marker-text {
+    font-size: 0.55rem;
   }
 }
