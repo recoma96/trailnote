@@ -1,11 +1,23 @@
 import type { Metadata } from "next";
-import { Gowun_Batang } from "next/font/google";
+import { Gowun_Batang, Nanum_Pen_Script, Lexend } from "next/font/google";
 import "./globals.css";
 
 const gowunBatang = Gowun_Batang({
   variable: "--font-gowun-batang",
   subsets: ["latin"],
   weight: ["400", "700"],
+});
+
+const nanumPenScript = Nanum_Pen_Script({
+  variable: "--font-nanum-pen-script",
+  subsets: ["latin"],
+  weight: ["400"],
+});
+
+const lexend = Lexend({
+  variable: "--font-lexend",
+  subsets: ["latin"],
+  weight: ["400"],
 });
 
 
@@ -19,7 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="ko"
     >
-      <body className={gowunBatang.variable}>{children}</body>
+      <body className={`${gowunBatang.variable} ${nanumPenScript.variable} ${lexend.variable}`}>{children}</body>
     </html>
   );
 }

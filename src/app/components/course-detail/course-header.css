@@ -1,0 +1,28 @@
+.main-layer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.title-marker {
+  font-size: 2rem;
+}
+
+.title {
+  margin: 0 0 10px 0;
+}
+
+.address {
+  font-family: var(--font-nanum-pen-script);
+  color: var(--course-detail-address-color);
+  margin: 10px 0 0 0;
+}
+
+
+@media (max-width: 768px) {
+  .title-marker {
+    font-size: 1.3rem;
+  }
+}

@@ -1,4 +1,6 @@
+import CourseHeader from "@/app/components/course-detail/CourseHeader";
 import { getCourse, getCourseCodes } from "@/app/lib/api/courses";
+import { getCourseDifficulty } from "@/app/lib/constants/difficulty";
 
 // generateStaticParams로 접속하면 404가 나오게 설정
 export const dynamicParams = false;
@@ -15,10 +17,15 @@ export default async function CourseDetailPage({
 }) {
   const { code } = await params;
   const course = await getCourse(code);
+  const difficultyInfo = getCourseDifficulty(course.courseLevel);
 
   return (
-    <div className="page">
-      <h1>코스명 {course.title}</h1>
-    </div>
+    <main className="page">
+      <CourseHeader
+        title={course.title}
+        address={course.address}
+        difficultyInfo={difficultyInfo}
+      />
+    </main>
   );
 }

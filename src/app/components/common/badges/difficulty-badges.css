@@ -1,0 +1,26 @@
+.course-difficulty-badge {
+  display: inline-grid;
+  border: 1px solid currentColor;
+  grid-template-columns: auto 1fr;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  font-family: var(--font-lexend);
+}
+
+.course-difficulty-badge-level {
+  border-right: 1px solid currentColor;
+  color: white;
+  padding: 3px 5px 3px 10px;
+}
+
+.course-difficulty-badge-code {
+  color: white;
+  padding: 3px 10px 3px 5px;
+}
+
+.course-difficulty-badge-stars {
+  background: white;
+  grid-column: 1 / -1;
+  border-top: 1px solid currentColor;
+}

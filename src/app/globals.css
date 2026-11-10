@@ -3,6 +3,23 @@
   --foreground: #514a3e;
   --layerBackground: #fff4c2;
   --layerBorder: #c6a85e;
+
+  --course-detail-address-color: #00756a;
+
+  --course-difficulty-0: #dededd;
+  --course-difficulty-1: #d8c52b;
+  --course-difficulty-2: #58b947;
+  --course-difficulty-3: #3c86c6;
+  --course-difficulty-4: #f68820;
+  --course-difficulty-5: #bf2327;
+  --course-difficulty-6: #6d2c91;
+  --course-difficulty-7: #231f20;
+
+  --segment-difficulty-0: #dededd;
+  --segment-difficulty-1: #58b947;
+  --segment-difficulty-2: #f68820;
+  --segment-difficulty-3: #bf2327;
+  --segment-difficulty-4: #010101;
 }
 
 * {
@@ -30,19 +47,35 @@ body {
   font-family: var(--font-gowun-batang), serif;
 }
 
+h2 {
+  font-size: 1.8rem;
+}
+
+hr {
+  width: 100%;
+  height: 0;
+  border: 0;
+  border-top: 1px solid var(--layerBorder);
+}
 
 .page {
   width: 100%;
   max-width: 1024px;
   min-height: 100dvh;
   margin-inline: auto;
-  padding: 16px;
+  padding: 24px 32px;
   background-color: var(--layerBackground);
   border: 2px solid var(--layerBorder);
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
   .page {
-    padding: 24px 32px;
+    padding: 16px;
   }
 }
