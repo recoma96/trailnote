@@ -10,7 +10,7 @@ export default async function CourseDetailPage({
   const { code } = await params;
 
   return (
-    <div>
+    <div className="page">
       <h1>코스 코드: {code}</h1>
     </div>
   );
