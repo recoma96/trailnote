@@ -32,7 +32,7 @@ export interface CourseSegment {
   images: CourseImage[];
   startPoint: CourseWaypoint;
   endPoint: CourseWaypoint;
-  tracks: CourseTrackPoint[];
+  trackPoints: CourseTrackPoint[];
 }
 
 export interface CourseLocation extends CourseCoordinates {
@@ -46,6 +46,7 @@ export interface CourseLocation extends CourseCoordinates {
 export interface GetCourseResponse {
   title: string;
   address: string;
+  isReturn: boolean;
   courseLevel: number;
   mainPictures: CourseImage[];
   runningTime: number;
