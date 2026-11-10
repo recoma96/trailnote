@@ -8,6 +8,29 @@ Next.js App Router 기반 앱입니다. TypeScript, 일반 CSS, ESLint를 사용
 - npm (초기 설정 확인 버전: 11.20.0)
 - Next.js 16.4.5 / React 19.3.0
 
+## 환경 변수
+
+| 이름 | 필수 | 설명 |
+| --- | --- | --- |
+| `DATA_API_BASE_URL` | O | 코스 데이터(JSON)가 있는 S3 주소. 끝에 `/`를 붙이지 않습니다. |
+
+코스 페이지는 SSG로 생성되므로, 이 값은 **빌드할 때** 사용됩니다. 값이 없으면 빌드가 실패합니다.
+빌드할 때 아래 두 경로를 요청합니다.
+
+- `{DATA_API_BASE_URL}/courses/codes.json`: 빌드할 코스 코드 목록
+- `{DATA_API_BASE_URL}/courses/{code}.json`: 코스 상세 정보
+
+환경별 설정 위치는 다음과 같습니다.
+
+- **로컬**: 프로젝트 루트에 `.env.local` 파일을 만들고 값을 넣습니다. `.env*` 파일은 git에 올라가지 않습니다.
+
+  ```bash
+  DATA_API_BASE_URL=https://example-bucket.s3.ap-northeast-2.amazonaws.com
+  ```
+
+- **GitHub Actions**: 저장소 Settings → Secrets and variables → Actions → **Variables**에 같은 이름으로 등록합니다.
+- **Vercel**: 프로젝트 Settings → Environment Variables에 같은 이름으로 등록합니다.
+
 ## 실행
 
 저장소를 처음 받은 경우 의존성을 설치합니다.
