@@ -1,4 +1,5 @@
 import CourseHeader from "@/app/components/course-detail/CourseHeader";
+import CourseIntroduction from "@/app/components/course-detail/CourseIntroduction";
 import CourseMainPicture from "@/app/components/course-detail/CourseMainPicture";
 import { getCourse, getCourseCodes } from "@/app/lib/api/courses";
 import { getCourseDifficulty } from "@/app/lib/constants/difficulty";
@@ -28,6 +29,8 @@ export default async function CourseDetailPage({
         difficultyInfo={difficultyInfo}
       />
       <CourseMainPicture mainPictures={course.mainPictures} />
+      <hr style={{ margin: "30px 0"  }} />
+      <CourseIntroduction courseDescriptions={course.courseDescriptions} />
     </main>
   );
 }

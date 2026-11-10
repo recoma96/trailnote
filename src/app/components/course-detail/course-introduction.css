@@ -1,0 +1,11 @@
+h3 {
+  text-decoration: underline;
+  margin: 0;
+}
+
+.course-introduction-layer {
+  display: flex;
+  flex-direction: column;
+
+  gap: 30px;
+}
