@@ -1,6 +1,8 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f5f1e8;
+  --foreground: #514a3e;
+  --layerBackground: #fff4c2;
+  --layerBorder: #c6a85e;
 }
 
 * {
@@ -15,37 +17,32 @@ html {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #181611;
     --foreground: #ededed;
+    --layerBackground: #302a1c;
+    --layerBorder: #78643b;
   }
 }
 
 body {
-  display: flex;
-  min-height: 100%;
-  flex-direction: column;
-  margin: 0;
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
-  line-height: 1.5;
+  font-family: var(--font-gowun-batang), serif;
 }
 
-h1,
-p {
-  margin: 0;
+
+.page {
+  width: 100%;
+  max-width: 1024px;
+  min-height: 100dvh;
+  margin-inline: auto;
+  padding: 16px;
+  background-color: var(--layerBackground);
+  border: 2px solid var(--layerBorder);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-}
-
-code {
-  font-family: var(--font-geist-mono), monospace;
+@media (min-width: 768px) {
+  .page {
+    padding: 24px 32px;
+  }
 }

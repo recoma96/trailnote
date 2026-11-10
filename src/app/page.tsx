@@ -1,3 +1,3 @@
 export default function Home() {
-  return <main style={{ minHeight: "100vh", backgroundColor: "#fff" }} />;
+  return <main>페이지가 없습니다.</main>
 }
