@@ -1,0 +1,46 @@
+.course-main-pictures {
+  text-align: center;
+  margin-top: 80px;
+  margin-left: 20px;
+  margin-right: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.course-main-pictures figure {
+  margin: 0;
+}
+
+.course-main-pictures figcaption {
+  margin-top: 5px;
+  font-size: 0.9rem;
+}
+
+.course-main-pictures .picture-item {
+  width: 100%;
+  height: auto;
+  border: 2px solid #fff;
+  outline: 3px solid #000;
+  outline-offset: 0;
+
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 9px 9px 0px;
+}
+
+
+@media (max-width: 768px) {
+  .course-main-pictures {
+    margin-left: 5px;
+    margin-right: 5px;
+    gap: 20px;
+  }
+  .course-main-pictures figcaption {
+    font-size: 0.7rem;
+  }
+  .course-main-pictures .picture-item {
+    border: 1px solid #fff;
+    outline: 2px solid #000;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 4px 0px;
+  }
+}

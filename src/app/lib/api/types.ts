@@ -1,5 +1,7 @@
 export interface CourseImage {
   url: string;
+  width: number;
+  height: number;
   summary: string;
 }
 
