@@ -4,6 +4,7 @@ import CourseMainPicture from "@/app/components/course-detail/CourseMainPicture"
 import CourseMap from "@/app/components/course-detail/CourseDetailMap";
 import { getCourse, getCourseCodes } from "@/app/lib/api/courses";
 import { getCourseDifficulty } from "@/app/lib/constants/difficulty";
+import HikingGraph from "@/app/components/course-detail/HikingGraph";
 
 // generateStaticParams로 접속하면 404가 나오게 설정
 export const dynamicParams = false;
@@ -34,6 +35,7 @@ export default async function CourseDetailPage({
       <CourseIntroduction courseDescriptions={course.courseDescriptions} />
       <hr style={{ margin: "30px 0"  }} />
       <CourseMap segments={course.segments} isReturn={course.isReturn} locations={course.locations} />
+      <HikingGraph segments={course.segments} />
     </main>
   );
 }
