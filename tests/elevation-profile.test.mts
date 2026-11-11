@@ -12,6 +12,25 @@ const course: GetCourseResponse = JSON.parse(readFileSync(
 describe("toElevationProfile", () => {
   it("빈 배열을 전달하면 빈 프로파일을 반환한다", () => {
     assert.deepEqual(toElevationProfile([]), []);
+    assert.deepEqual(toElevationProfile([], 1), []);
+  });
+
+  it("시작 거리가 1km이면 첫 점부터 1km 기준으로 거리를 누적한다", () => {
+    const profile = toElevationProfile([
+      { lat: 0, lng: 0, ele: 10 },
+      { lat: 0, lng: 1, ele: 20 },
+      { lat: 0, lng: 2, ele: 30 },
+    ], 1);
+    assert.equal(profile[0].distanceKm, 1);
+    assert.ok(Math.abs(profile[1].distanceKm - 112.194926645) < 1e-8);
+    assert.ok(Math.abs(profile[2].distanceKm - 223.389853289) < 1e-8);
+    assert.deepEqual(profile.map((point) => point.elevation), [10, 20, 30]);
+  });
+
+  it("점이 하나여도 소수점 시작 거리를 그대로 유지한다", () => {
+    assert.deepEqual(toElevationProfile([{ lat: 36, lng: 129, ele: 722 }], 1.25), [
+      { distanceKm: 1.25, elevation: 722 },
+    ]);
   });
 
   it("점이 하나이면 거리는 0km이고 고도는 유지된다", () => {

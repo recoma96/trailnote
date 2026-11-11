@@ -5,13 +5,14 @@ export type ElevationProfilePoint = {
   elevation: number;
 };
 
-/** 좌표 순서를 유지하며 누적 지표면 거리(km)와 해발고도(m)로 변환합니다. */
+/** 시작 거리(km)부터 지표면 거리를 누적하고, 좌표 순서와 해발고도(m)를 유지합니다. */
 export function toElevationProfile(
   points: readonly CourseTrackPoint[],
+  startDistanceKm: number = 0,
 ): ElevationProfilePoint[] {
   const earthRadiusKm = 6371;
   const toRadians = Math.PI / 180;
-  let distanceKm = 0;
+  let distanceKm = startDistanceKm;
 
   return points.map((point, index) => {
     if (index > 0) {
