@@ -1,16 +1,19 @@
 'use client';
 
 import "@/app/components/course-detail/course-detail-map.css";
-import { GetCourseResponse } from "@/app/lib/api/types";
+import { CourseLocation, GetCourseResponse } from "@/app/lib/api/types";
 import { changeDifficultyColorCss2Hex, getSegemntDifficulty } from "@/app/lib/constants/difficulty";
+import { LOCATION_MARKER_ICONS } from "@/app/lib/constants/map";
 import { isMobile } from "@/app/lib/utils";
 import Script from "next/script";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import LocationBottomSheet from "./LocationBottomSheet";
 
-type CourseDetailMapProps = Pick<GetCourseResponse, "segments" | "isReturn">;
+type CourseDetailMapProps = Pick<GetCourseResponse, "segments" | "isReturn" | "locations">;
 
-export default function CourseDetailMap({ segments, isReturn } : CourseDetailMapProps) {
+export default function CourseDetailMap({ segments, isReturn, locations } : CourseDetailMapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
+  const [selectedLocation, setSelectedLocation] = useState<CourseLocation | null>(null);
 
   const initMap = () =>  {
     if (!mapRef.current || !window.naver?.maps) return;
@@ -78,6 +81,38 @@ export default function CourseDetailMap({ segments, isReturn } : CourseDetailMap
         path: segment.trackPoints.map((trackPoint) => new window.naver.maps.LatLng(trackPoint.lat, trackPoint.lng)),
       })
     });
+
+
+    // 명소 관련 정보도 마커로 표시
+    locations.forEach((location) => {
+      const latLng = new window.naver.maps.LatLng(location.lat, location.lng);
+      const markerWidth = isMobile() ? 30 : 40;
+      const markerHeight = markerWidth * 1.2;
+      const iconUrl = Object.hasOwn(LOCATION_MARKER_ICONS, location.type)
+        ? LOCATION_MARKER_ICONS[location.type]
+        : "/markers/default.svg";
+
+      const marker = new window.naver.maps.Marker({
+        map: naverMap,
+        position: latLng,
+        title: location.name,
+        icon: {
+          url: iconUrl,
+          size: new maps.Size(markerWidth, markerHeight),
+          scaledSize: new maps.Size(markerWidth, markerHeight),
+          anchor: new maps.Point(markerWidth / 2, markerHeight * 46 / 48),
+        },
+      });
+
+      // 클릭 시 해당 명소에 대한 모달이 하단에서 올라올라오게 리스너 설정
+      window.naver.maps.Event.addListener(marker, "click", () => {
+        // 클릭한 명소의 위치로 맵을 이동
+        naverMap.panTo(new window.naver.maps.LatLng(location.lat, location.lng));
+        // 모달 활성화
+        setSelectedLocation(location);
+      });
+    });
+
   }
 
   return (
@@ -88,6 +123,10 @@ export default function CourseDetailMap({ segments, isReturn } : CourseDetailMap
         onReady={initMap}
       />
       <div ref={mapRef} className="course-detail-map" />
+      <LocationBottomSheet
+        location={selectedLocation}
+        onClose={() => setSelectedLocation(null)}
+      />
     </div>
   );
 }
