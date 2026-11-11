@@ -1,0 +1,41 @@
+.course-detail-location-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.35);
+  animation: backdrop-in 200ms ease-out;
+}
+
+.course-detail-location-layer .course-detail-location-bottom-sheet {
+  width: 100%;
+  max-width: 1024px;
+  position: fixed;
+  z-index: 1000;
+
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
+  margin-inline: auto;
+  animation: sheet-in 250ms ease-out;
+}
+
+.course-detail-location-layer .course-detail-location-bottom-sheet .text-layer {
+  padding: 10px 20px 10px 20px;
+  background-color: white;
+}
+
+.course-detail-location-bottom-sheet .close-bottom {
+  position: absolute;
+  right: 16px;
+  cursor: pointer;
+
+  background-color: white;
+  border: transparent;
+  font-size: 2rem;
+}
+
+@keyframes backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

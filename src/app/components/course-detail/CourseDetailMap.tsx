@@ -1,17 +1,19 @@
 'use client';
 
 import "@/app/components/course-detail/course-detail-map.css";
-import { GetCourseResponse } from "@/app/lib/api/types";
+import { CourseLocation, GetCourseResponse } from "@/app/lib/api/types";
 import { changeDifficultyColorCss2Hex, getSegemntDifficulty } from "@/app/lib/constants/difficulty";
 import { LOCATION_MARKER_ICONS } from "@/app/lib/constants/map";
 import { isMobile } from "@/app/lib/utils";
 import Script from "next/script";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import LocationBottomSheet from "./LocationBottomSheet";
 
 type CourseDetailMapProps = Pick<GetCourseResponse, "segments" | "isReturn" | "locations">;
 
 export default function CourseDetailMap({ segments, isReturn, locations } : CourseDetailMapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
+  const [selectedLocation, setSelectedLocation] = useState<CourseLocation | null>(null);
 
   const initMap = () =>  {
     if (!mapRef.current || !window.naver?.maps) return;
@@ -90,7 +92,7 @@ export default function CourseDetailMap({ segments, isReturn, locations } : Cour
         ? LOCATION_MARKER_ICONS[location.type]
         : "/markers/default.svg";
 
-      new window.naver.maps.Marker({
+      const marker = new window.naver.maps.Marker({
         map: naverMap,
         position: latLng,
         title: location.name,
@@ -100,6 +102,14 @@ export default function CourseDetailMap({ segments, isReturn, locations } : Cour
           scaledSize: new maps.Size(markerWidth, markerHeight),
           anchor: new maps.Point(markerWidth / 2, markerHeight * 46 / 48),
         },
+      });
+
+      // 클릭 시 해당 명소에 대한 모달이 하단에서 올라올라오게 리스너 설정
+      window.naver.maps.Event.addListener(marker, "click", () => {
+        // 클릭한 명소의 위치로 맵을 이동
+        naverMap.panTo(new window.naver.maps.LatLng(location.lat, location.lng));
+        // 모달 활성화
+        setSelectedLocation(location);
       });
     });
 
@@ -113,6 +123,10 @@ export default function CourseDetailMap({ segments, isReturn, locations } : Cour
         onReady={initMap}
       />
       <div ref={mapRef} className="course-detail-map" />
+      <LocationBottomSheet
+        location={selectedLocation}
+        onClose={() => setSelectedLocation(null)}
+      />
     </div>
   );
 }

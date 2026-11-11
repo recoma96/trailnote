@@ -1,0 +1,35 @@
+.scrolled-image-slider {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  background-color: rgb(0, 0, 0, 0.45);
+}
+
+.scrolled-image-slider .item {
+  flex: 0 0 100%;
+  min-width: 0;
+  margin: 0;
+  scroll-snap-align: start;
+}
+
+.scrolled-image-slider .item .image {
+  display: block;
+  width: 100%;
+  object-fit: contain;
+  height: var(--slider-height);
+}
+
+.scrolled-image-slider .item figcaption {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  text-align: center;
+  font-size: 0.8rem;
+  background-color: white;
+}
+
+@media (max-width: 768px) {
+  .scrolled-image-slider .item .image {
+    height: var(--slider-mobile-height);
+  }
+}
