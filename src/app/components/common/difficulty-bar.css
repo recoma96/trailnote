@@ -1,0 +1,68 @@
+.difficulty-bar {
+  margin-top: 50px;
+  font-family: var(--font-gothic-a1);
+}
+
+.difficulty-bar .bar {
+  display: flex;
+  font-size: 0.8rem;
+
+  box-shadow: rgba(0, 0, 0, 0.6) 0px 3px 3px 0px;
+}
+
+.difficulty-bar .bar .item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  padding: 6px 10px;
+  width: 100px;
+
+  position: relative;
+}
+
+/* 난이도 표시 뱃지 */
+.difficulty-bar .difficulty-here {
+  /* 배치 */
+  position: absolute;
+  left: 50%;
+  bottom: 110%;
+  z-index: 1000;
+  transform: translateX(-50%);
+
+  color: black;
+
+  /* 스타일 */
+  display: inline-block;
+  padding: 6px 12px;
+  background: linear-gradient(rgb(230, 220, 220), rgb(240, 240, 240));
+  border: 1px solid skyblue;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 2px 0px;
+}
+
+/* 아래쪽 삼각형 꼬리 만들기 */
+.difficulty-bar .difficulty-here::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* 태그의 맨 아래쪽 경계에 배치 */
+  left: 50%; /* 가로 중앙 정렬을 위한 시작점 */
+  transform: translateX(-50%); /* 정확한 정중앙 배치 */
+  
+  /* 삼각형 모양 핵심 코드 */
+  border-width: 10px; /* 삼각형 크기 조절 */
+  border-style: solid;
+  border-color: #F0F0F0 transparent transparent transparent; /* 위쪽 테두리만 배경색과 동일하게 지정 */
+}
+
+.difficulty-bar .bar .item p {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .difficulty-bar {
+    display: none;
+  }
+}

@@ -51,4 +51,9 @@
   .course-detail-map .course-marker-text {
     font-size: 0.55rem;
   }
+
+  .course-introduce-main-layer {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
 }
