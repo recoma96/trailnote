@@ -13,8 +13,7 @@ type CourseDifficultyIntroduceHeader = Pick<GetCourseResponse, "runningTime" | "
 };
 
 export default function CourseDifficultyIntroduceHeader({ runningTime, segments, difficultyInfo } : CourseDifficultyIntroduceHeader) {
-  const allDistance = segments.reduce((acc, segment) => acc + segment.runningTime, 0);
-  const allDistanceKm = Math.floor(allDistance / 10) / 10; 
+  const allDistance = segments.reduce((acc, segment) => acc + segment.distance, 0);
   
   return (
     <div className="course-introduce-main-layer">
@@ -24,7 +23,7 @@ export default function CourseDifficultyIntroduceHeader({ runningTime, segments,
           <div className="layer">
             <div className="item">
               <Ruler size={20} />
-              <p>거리: {allDistanceKm}</p>
+              <p>거리: {Math.floor((allDistance * 10)) / 10} km</p>
             </div>
             <div className="item">
               <Timer size={20} />
