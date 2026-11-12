@@ -47,6 +47,7 @@ export interface GetCourseResponse {
   title: string;
   address: string;
   isReturn: boolean;
+  introduce: string;
   courseLevel: number;
   mainPictures: CourseImage[];
   runningTime: number;

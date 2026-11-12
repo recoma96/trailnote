@@ -32,6 +32,7 @@ export default async function CourseDetailPage({
         title={course.title}
         address={course.address}
         difficultyInfo={difficultyInfo}
+        introduce={course.introduce}
       />
       <CourseMainPicture mainPictures={course.mainPictures} />
       <hr style={{ margin: "30px 0"  }} />
