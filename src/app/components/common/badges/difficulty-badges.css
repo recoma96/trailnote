@@ -11,12 +11,12 @@
 .course-difficulty-badge-level {
   border-right: 1px solid currentColor;
   color: white;
-  padding: 3px 5px 3px 10px;
+  padding: 3px 10px 3px 10px;
 }
 
 .course-difficulty-badge-code {
   color: white;
-  padding: 3px 10px 3px 5px;
+  padding: 3px 10px 3px 10px;
 }
 
 .course-difficulty-badge-stars {
