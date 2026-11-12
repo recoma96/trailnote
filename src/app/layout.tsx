@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Footer from "@/app/components/common/Footer";
 import { Gowun_Batang, Nanum_Pen_Script, Lexend, Gothic_A1 } from "next/font/google";
 import "./globals.css";
 
@@ -36,7 +37,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="ko"
     >
-      <body className={`${gowunBatang.variable} ${nanumPenScript.variable} ${lexend.variable} ${gothicA1.variable}`}>{children}</body>
+      <body className={`${gowunBatang.variable} ${nanumPenScript.variable} ${lexend.variable} ${gothicA1.variable}`}>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
