@@ -1,6 +1,41 @@
 ﻿# Trailnote
 
-Next.js App Router 기반 앱입니다. TypeScript, 일반 CSS, ESLint를 사용합니다.
+![](readme-assets/main.png)
+
+## 개요
+
+* 등산 및 트레킹 가이드 웹 서비스 입니다. 전반적인 코스 검색 서비스 보다는, 개인 블로그에 여행 관련 글을 쓸 때 가이드 공유 목적으로 간단하게 개발했습니다.
+  * _하지만 전반적인 가이드 웹 서비스를 목표로 하고 있으며, 계속 기능을 확장 중입니다._
+
+
+## 기능 설명
+
+### 현재 구현된 기능
+
+- 코스별 소개, 사진, 거리, 소요 시간 및 난이도 안내
+- 네이버 지도 기반 경로 표시 및 구간별 난이도 색상 구분
+- 지도에서 명소 선택 시 사진과 상세 설명 제공
+- 이동 거리에 따른 고도 변화 그래프 제공
+- 구간별 이동 가이드와 방문 참고 정보 안내
+- 모바일·태블릿·데스크톱 대응 반응형 화면
+- 코스별 브라우저 제목 및 OG 링크 미리보기 설정
+
+### 개발 예정 (RodadMap)
+
+- [ ] 난이도 설명 및 기준 페이지 제작
+- [ ] 카카오톡 공유 기능
+- [ ] **(해당 저장소 외) 백엔드 서버 구축 및 연동 -> 기능 확장을 위한 필수 단계**
+
+
+## 기술 구성
+
+- **Next.js App Router / React / TypeScript**: 컴포넌트 기반 UI 및 코스별 정적 페이지 생성(SSG)
+- **AWS S3 / CloudFront**: 코스 JSON 데이터와 이미지 저장·배포
+- **Naver Maps API**: 코스 경로 및 주요 명소 표시
+- **Recharts**: 구간별 난이도를 반영한 거리·고도 그래프
+- **Haversine 공식**: 위경도 좌표 간 거리를 계산해 그래프의 누적 거리 산출
+- **CSS Media Query / Scroll Snap**: 반응형 화면 및 이미지 슬라이더 구현
+- **GitHub Actions**: 코드 스타일, 타입, 테스트 및 빌드 검증 자동화
 
 ## 개발 환경
 
@@ -8,7 +43,7 @@ Next.js App Router 기반 앱입니다. TypeScript, 일반 CSS, ESLint를 사용
 - npm (초기 설정 확인 버전: 11.20.0)
 - Next.js 16.4.5 / React 19.3.0
 
-## 환경 변수
+### 환경 변수
 
 | 이름 | 필수 | 설명 |
 | --- | --- | --- |
@@ -33,7 +68,7 @@ Next.js App Router 기반 앱입니다. TypeScript, 일반 CSS, ESLint를 사용
 - **GitHub Actions**: 저장소 Settings → Secrets and variables → Actions → **Variables**에 같은 이름으로 등록합니다.
 - **Vercel**: 프로젝트 Settings → Environment Variables에 같은 이름으로 등록합니다.
 
-## 실행
+### 실행
 
 저장소를 처음 받은 경우 의존성을 설치합니다.
 
@@ -50,7 +85,7 @@ npm run dev
 [http://localhost:3000](http://localhost:3000)에서 확인할 수 있습니다.
 `src/app/page.tsx`를 수정하면 변경 사항이 자동 반영됩니다.
 
-## 검증 및 프로덕션 실행
+### 검증 및 프로덕션 실행
 
 ```bash
 npm run lint
@@ -70,20 +105,5 @@ Gowun Batang 폰트를 가져오므로 최초 개발 실행과 빌드 시 Google
 - **빌드 검증**: `npm run build`로 S3 데이터를 가져와 SSG 빌드가 성공하는지 확인 (PR에서만)
 
 변경된 파일이 모두 Markdown(`*.md`)이면 CI를 실행하지 않습니다.
-
-## 주요 파일
-
-- `src/app/page.tsx`: 홈 페이지
-- `src/app/layout.tsx`: 공통 레이아웃과 메타데이터
-- `src/app/globals.css`: 전역 스타일
-- `src/app/courses/[code]/page.tsx`: 코스 상세 페이지 (SSG)
-- `src/app/difficulty/page.tsx`: 난이도 소개 페이지
-- `src/app/lib/api/`: S3 데이터 요청 함수(`index.ts`, `courses.ts`)와 응답 타입(`types.ts`)
-- `src/app/components/`: 공통 컴포넌트
-- `public/`: 정적 파일
-- `.github/workflows/CI.yaml`: CI 설정
-- `next.config.ts`: Next.js 설정
-- `eslint.config.mjs`: ESLint 설정
-- `tsconfig.json`: TypeScript 설정 (`@/*`는 `src/*` 경로)
 
 추가 설정은 [Next.js 공식 문서](https://nextjs.org/docs)를 참고하세요.
