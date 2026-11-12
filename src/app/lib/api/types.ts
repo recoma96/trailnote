@@ -52,7 +52,7 @@ export interface GetCourseResponse {
   runningTime: number;
   courseDescriptions: CourseDescription[];
   courseDifficultyDescriptions: string[];
-  note: CourseDescription[];
+  notes: CourseDescription[];
   segments: CourseSegment[];
   locations: CourseLocation[];
 }
