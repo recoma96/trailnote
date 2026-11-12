@@ -4,7 +4,7 @@ import "@/app/components/course-detail/course-difficulty-introduce-header.css";
 import { GetCourseResponse } from "@/app/lib/api/types";
 import { DifficultyInfo } from "@/app/lib/constants/difficulty";
 import { setTimeNumber2KoreanTimeFormat } from "@/app/lib/utils";
-import { Timer, Ruler } from "lucide-react";
+import { Timer, Ruler, Gauge } from "lucide-react";
 import { DifficultyBar } from "../common/DifficultyBar";
 
 
@@ -21,14 +21,20 @@ export default function CourseDifficultyIntroduceHeader({ runningTime, segments,
         <div style={{fontSize: "2rem"}}>🌱</div>
         <h1 style={{margin: 0}}>코스 소개</h1>
         <div className="metadata">
-          <div className="text-area">
-            <div className="item distance">
+          <div className="layer">
+            <div className="item">
               <Ruler size={20} />
               <p>거리: {allDistanceKm}</p>
             </div>
-            <div className="item runningTime">
+            <div className="item">
               <Timer size={20} />
               <p>소요시간: {setTimeNumber2KoreanTimeFormat(runningTime)}</p>
+            </div>
+          </div>
+          <div className="layer difficulty-layer">
+            <div className="item">
+              <Gauge size={20} />
+              <p>Lv.{difficultyInfo.level} {difficultyInfo.label}</p>
             </div>
           </div>
         </div>

@@ -15,17 +15,11 @@
   margin-bottom: 20px;
 }
 
-.course-introduce-main-layer .metadata .text-area {
+.course-introduce-main-layer .metadata .layer {
   display: flex;
   flex-direction: row;
   gap: 20px;
   font-size: 0.9rem;
-}
-
-.course-introduce-main-layer .metadata .difficulty {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
 }
 
 .course-introduce-main-layer .metadata .item {
@@ -37,19 +31,25 @@
   margin: 0 0 0 5px;
 }
 
-
 @media (max-width: 768px) {
   .course-introduce-main-layer {
     margin-top: 30px;
     margin-bottom: 20px;
   }
 
-  .course-introduce-main-layer .metadata .text-area  {
+  .course-introduce-main-layer .metadata .layer {
     font-size: 0.7rem;
     gap: 15px;
   }
 
   .course-introduce-main-layer .metadata {
     margin-bottom: 10px;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .course-introduce-main-layer .metadata .difficulty-layer {
+    display: none;
   }
 }
