@@ -37,3 +37,9 @@ export function toElevationProfile(
 export function isMobile():  boolean {
   return window.matchMedia("(max-width: 768px)").matches;
 }
+
+export function setTimeNumber2KoreanTimeFormat(minutes: number): string {
+  const hours = Math.floor(minutes / 60);
+  const remainMinutes = minutes % 60;
+  return `${hours}시간 ${remainMinutes}분`;
+}

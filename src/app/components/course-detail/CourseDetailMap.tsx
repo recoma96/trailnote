@@ -117,11 +117,6 @@ export default function CourseDetailMap({ segments, isReturn, locations } : Cour
 
   return (
     <div>
-      <div className="course-introduce-main-layer">
-        <div style={{fontSize: "2rem"}}>🌱</div>
-        <h1 style={{margin: 0}}>코스 소개</h1>
-      </div>
-
       <Script
         src={`https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID}`}
         strategy="afterInteractive"
