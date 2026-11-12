@@ -8,6 +8,7 @@ import HikingGraph from "@/app/components/course-detail/HikingGraph";
 import CourseDifficultyIntroduceHeader from "@/app/components/course-detail/CourseDifficultyIntroduceHeader";
 import CourseDifficultyIntroduce from "@/app/components/course-detail/CourseDifficultyIntroduce";
 import CourseNote from "@/app/components/course-detail/CourseNote";
+import type { Metadata } from "next";
 
 // generateStaticParams로 접속하면 404가 나오게 설정
 export const dynamicParams = false;
@@ -16,6 +17,35 @@ export async function generateStaticParams() {
   const courseCodes = await getCourseCodes();
   return courseCodes.map((code) => ({code}));
 }
+
+// 브라우저 타이틀 및 OG
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ code: string }>;
+}): Promise<Metadata> {
+  const { code } = await params;
+  const course = await getCourse(code);
+  const firstImage = course.mainPictures[0];
+
+  return {
+    title: course.title,
+    description: course.introduce,
+    openGraph: {
+      title: course.title,
+      description: course.introduce,
+      images: firstImage
+        ? [{
+            url: firstImage.url,
+            width: firstImage.width,
+            height: firstImage.height,
+            alt: firstImage.summary || course.title,
+          }]
+        : [],
+    },
+  };
+}
+
 
 export default async function CourseDetailPage({
   params,
