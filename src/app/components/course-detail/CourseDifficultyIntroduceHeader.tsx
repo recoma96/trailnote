@@ -33,7 +33,7 @@ export default function CourseDifficultyIntroduceHeader({ runningTime, segments,
             </div>
           </div>
         </div>
-        <DifficultyBar currentDifficulty={difficultyInfo}  />
+        <DifficultyBar currentDifficulty={difficultyInfo} />
       </div>
   )
 }

@@ -41,5 +41,14 @@ export function isMobile():  boolean {
 export function setTimeNumber2KoreanTimeFormat(minutes: number): string {
   const hours = Math.floor(minutes / 60);
   const remainMinutes = minutes % 60;
-  return `${hours}시간 ${remainMinutes}분`;
+  let result = "";
+
+  if (hours > 0) {
+    result += `${hours}시간`;
+  }
+  if (remainMinutes > 0) {
+    result += ` ${remainMinutes}분`;
+  }
+
+  return result;
 }
