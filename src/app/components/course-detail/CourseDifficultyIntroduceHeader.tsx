@@ -14,7 +14,6 @@ type CourseDifficultyIntroduceHeader = Pick<GetCourseResponse, "runningTime" | "
 
 export default function CourseDifficultyIntroduceHeader({ runningTime, segments, difficultyInfo } : CourseDifficultyIntroduceHeader) {
   const allDistance = segments.reduce((acc, segment) => acc + segment.runningTime, 0);
-  
   const allDistanceKm = Math.floor(allDistance / 10) / 10; 
   
   return (

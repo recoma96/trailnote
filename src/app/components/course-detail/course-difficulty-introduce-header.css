@@ -11,15 +11,15 @@
   margin-top: 10px;
   padding: 5px 10px;
   border-radius: 6px;
-  background-color: #e2edc5;
-  
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 4px 0px;
+  border: 1px solid #74834c;
+  margin-bottom: 20px;
 }
 
 .course-introduce-main-layer .metadata .text-area {
   display: flex;
   flex-direction: row;
   gap: 20px;
+  font-size: 0.9rem;
 }
 
 .course-introduce-main-layer .metadata .difficulty {
@@ -37,14 +37,19 @@
   margin: 0 0 0 5px;
 }
 
-.course-introduce-main-layer .metadata .runningTime {
-  font-size: 0.9rem;
-}
-
 
 @media (max-width: 768px) {
   .course-introduce-main-layer {
     margin-top: 30px;
     margin-bottom: 20px;
+  }
+
+  .course-introduce-main-layer .metadata .text-area  {
+    font-size: 0.7rem;
+    gap: 15px;
+  }
+
+  .course-introduce-main-layer .metadata {
+    margin-bottom: 10px;
   }
 }
