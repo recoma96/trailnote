@@ -6,6 +6,7 @@ import { getCourse, getCourseCodes } from "@/app/lib/api/courses";
 import { getCourseDifficulty } from "@/app/lib/constants/difficulty";
 import HikingGraph from "@/app/components/course-detail/HikingGraph";
 import CourseDifficultyIntroduceHeader from "@/app/components/course-detail/CourseDifficultyIntroduceHeader";
+import CourseDifficultyIntroduce from "@/app/components/course-detail/CourseDifficultyIntroduce";
 
 // generateStaticParams로 접속하면 404가 나오게 설정
 export const dynamicParams = false;
@@ -38,6 +39,7 @@ export default async function CourseDetailPage({
       <CourseDifficultyIntroduceHeader runningTime={course.runningTime} segments={course.segments} difficultyInfo={difficultyInfo} />
       <CourseMap segments={course.segments} isReturn={course.isReturn} locations={course.locations} />
       <HikingGraph segments={course.segments} />
+      <CourseDifficultyIntroduce segments={course.segments} />
     </main>
   );
 }
