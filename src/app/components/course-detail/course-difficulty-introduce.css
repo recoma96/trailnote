@@ -1,0 +1,41 @@
+.course-difficulty-introduce {
+  margin-top: 40px;
+}
+
+.course-difficulty-introduce .item {
+  margin-bottom: 30px;
+}
+
+.course-difficulty-introduce .item p {
+  margin: 5px 0;
+}
+
+
+.course-difficulty-introduce .title-layer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
+.course-difficulty-introduce .title-layer .marker {
+  width: 34px;
+  height: 34px;
+  min-width: 34px;
+  min-height: 34px;
+  border-radius: 50%;
+  background-color: white;
+
+  /* 숫자를 원의 정중앙에 배치하기 위한 Flexbox 설정 */
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center;     /* 세로 중앙 정렬 */
+
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .difficulty-bar {
+    display: none;
+  }
+}
