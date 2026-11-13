@@ -24,3 +24,9 @@
   grid-column: 1 / -1;
   border-top: 1px solid currentColor;
 }
+
+@media (prefers-color-scheme: dark)  {
+  .course-difficulty-badge-stars {
+    background: var(--layerBackground);
+  }
+}
