@@ -30,7 +30,7 @@ export default function LocationBottomSheet({ location, onClose } : LocationBott
           })) ?? []}
         />
         <div className="text-layer">
-          <button type="button" className="close-bottom" onClick={onClose} aria-label="닫기">x</button>
+          <button type="button" className="close-botton" onClick={onClose} aria-label="닫기">x</button>
           <h1>{location?.name}</h1>
           <p>{location?.content}</p>
         </div>

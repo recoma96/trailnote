@@ -57,3 +57,9 @@
     margin-bottom: 20px;
   }
 }
+
+@media (prefers-color-scheme: dark)  {
+  .course-detail-map .course-marker-text {
+    color: black;
+  }
+}

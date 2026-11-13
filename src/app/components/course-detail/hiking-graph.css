@@ -1,7 +1,7 @@
 .hiking-graph {
   margin-top: 20px;
   height: 300px;
-  background-color: #FEFEFE;
+  background-color: white;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 4px 0px;
 }
@@ -45,5 +45,31 @@
 
   .hiking-graph .tooltip .segment-name {
     padding: 1.5px 8px 1.5px 8px;
+  }
+}
+
+@media (prefers-color-scheme: dark)  {
+  .hiking-graph .tooltip {
+    background: #3a3a3a;
+  }
+  .hiking-graph {
+    background-color: #3a3a3a;
+  }
+
+
+  /* 축 선, 눈금 선 */
+  .hiking-graph .recharts-cartesian-axis-line,
+  .hiking-graph .recharts-cartesian-axis-tick-line {
+    stroke: #8a8a8a;
+  }
+
+  /* 눈금 글자: 읽혀야 하므로 가장 밝게 */
+  .hiking-graph .recharts-cartesian-axis-tick-value {
+    fill: #c8c8c8;
+  }
+
+  /* 마우스를 올렸을 때 세로선 */
+  .hiking-graph .recharts-tooltip-cursor {
+    stroke: #8a8a8a;
   }
 }

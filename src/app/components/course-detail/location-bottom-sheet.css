@@ -25,7 +25,7 @@
   background-color: white;
 }
 
-.course-detail-location-bottom-sheet .close-bottom {
+.course-detail-location-bottom-sheet .close-botton {
   position: absolute;
   right: 16px;
   cursor: pointer;
@@ -38,4 +38,16 @@
 @keyframes backdrop-in {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+
+@media (prefers-color-scheme: dark)  {
+  .course-detail-location-bottom-sheet .close-botton {
+    background:  var(--layerBackground);
+    color: white;
+  }
+
+  .course-detail-location-layer .course-detail-location-bottom-sheet .text-layer  {
+    background-color: var(--layerBackground);
+  }
 }
