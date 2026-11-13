@@ -37,7 +37,25 @@ html {
     --background: #181611;
     --foreground: #ededed;
     --layerBackground: #302a1c;
-    --layerBorder: #78643b;
+    --layerBorder: #a18745;
+
+    /* 라이트 모드와 같은 색상(hue)을 유지하고 채도를 낮춤.
+       배경(#181611) 위 글자색과 흰 글자를 올리는 배지 배경 양쪽에서 읽히도록 밝기 조정 */
+    --course-difficulty-0: #a2a29f;
+    --course-difficulty-1: #beb03c;
+    --course-difficulty-2: #549948;
+    --course-difficulty-3: #4884b7;
+    --course-difficulty-4: #dd7d21;
+    --course-difficulty-5: #c74d50;
+    --course-difficulty-6: #9553ba;
+    --course-difficulty-7: #736669;
+
+    /* 라이트 모드에서 같은 색을 쓰는 코스 난이도와 동일한 다크 색으로 통일 */
+    --segment-difficulty-0: #a2a29f;
+    --segment-difficulty-1: #549948;
+    --segment-difficulty-2: #dd7d21;
+    --segment-difficulty-3: #c74d50;
+    --segment-difficulty-4: #6f6f6f;
   }
 }
 
