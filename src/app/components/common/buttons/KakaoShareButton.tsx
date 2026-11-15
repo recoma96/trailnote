@@ -33,7 +33,7 @@ export function CourseDetailKakaoShareButton(params: CourseDetailKakaoSharedButt
         introduce: params.description,
         difficulty: difficulty.label,
         runningTime: runningTimeString,
-        distance: Math.floor(params.distance * 10) / 10,
+        distance: String(Math.floor(params.distance * 10) / 10),
         title: params.courseName,
         mainImage: params.imageUrl,
         courseStyle: params.isReturn ? "왕복" : "편도",
