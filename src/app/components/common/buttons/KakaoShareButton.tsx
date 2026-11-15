@@ -33,7 +33,6 @@ export function CourseDetailKakaoShareButton(params: CourseDetailKakaoSharedButt
         introduce: params.description,
         difficulty: difficulty.label,
         runningTime: runningTimeString,
-        locationUrl: "https://naver.me/GdT05jfm",
         distance: Math.floor(params.distance * 10) / 10,
         title: params.courseName,
         mainImage: params.imageUrl,
