@@ -3,7 +3,7 @@
 import "@/app/components/course-detail/course-difficulty-introduce-header.css";
 import { GetCourseResponse } from "@/app/lib/api/types";
 import { DifficultyInfo } from "@/app/lib/constants/difficulty";
-import { setTimeNumber2KoreanTimeFormat } from "@/app/lib/utils";
+import { setTimeNumber2KoreanTimeFormat, sumSegmentDistance } from "@/app/lib/utils";
 import { Timer, Ruler, Gauge } from "lucide-react";
 import { DifficultyBar } from "../common/DifficultyBar";
 
@@ -13,7 +13,7 @@ type CourseDifficultyIntroduceHeader = Pick<GetCourseResponse, "runningTime" | "
 };
 
 export default function CourseDifficultyIntroduceHeader({ runningTime, segments, difficultyInfo } : CourseDifficultyIntroduceHeader) {
-  const allDistance = segments.reduce((acc, segment) => acc + segment.distance, 0);
+  const allDistance = sumSegmentDistance(segments);
   
   return (
     <div className="course-introduce-main-layer">

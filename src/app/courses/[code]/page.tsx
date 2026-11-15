@@ -9,6 +9,8 @@ import CourseDifficultyIntroduceHeader from "@/app/components/course-detail/Cour
 import CourseDifficultyIntroduce from "@/app/components/course-detail/CourseDifficultyIntroduce";
 import CourseNote from "@/app/components/course-detail/CourseNote";
 import type { Metadata } from "next";
+import { CourseDetailKakaoShareButton } from "@/app/components/common/buttons/KakaoShareButton";
+import { sumSegmentDistance } from "@/app/lib/utils";
 
 // generateStaticParams로 접속하면 404가 나오게 설정
 export const dynamicParams = false;
@@ -74,6 +76,18 @@ export default async function CourseDetailPage({
       <CourseDifficultyIntroduce segments={course.segments} />
       <hr style={{ margin: "30px 0"  }} />
       <CourseNote notes={course.notes}  />
+      <div style={{ textAlign: "right" }}>
+        <CourseDetailKakaoShareButton
+          courseName={course.title}
+          imageUrl={course.mainPictures[0].url}
+          description={course.introduce}
+          courseLevel={course.courseLevel}
+          runningTime={course.runningTime}
+          distance={sumSegmentDistance(course.segments)}
+          isReturn={course.isReturn}
+          courseCode={code}
+        />
+      </div>
     </main>
   );
 }

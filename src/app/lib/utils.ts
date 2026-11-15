@@ -1,4 +1,4 @@
-import type { CourseTrackPoint } from "@/app/lib/api/types";
+import type { CourseSegment, CourseTrackPoint } from "@/app/lib/api/types";
 
 export type ElevationProfilePoint = {
   distanceKm: number;
@@ -51,4 +51,8 @@ export function setTimeNumber2KoreanTimeFormat(minutes: number): string {
   }
 
   return result;
+}
+
+export function sumSegmentDistance(segments: CourseSegment[]): number {
+  return segments.reduce((acc, segment) => acc + segment.distance, 0);
 }
