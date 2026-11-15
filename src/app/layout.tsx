@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Footer from "@/app/components/common/Footer";
 import { Gowun_Batang, Nanum_Pen_Script, Lexend, Gothic_A1 } from "next/font/google";
 import "./globals.css";
+import KakaoScript from "./components/KakaoScript";
 
 const gowunBatang = Gowun_Batang({
   variable: "--font-gowun-batang",
@@ -39,6 +40,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className={`${gowunBatang.variable} ${nanumPenScript.variable} ${lexend.variable} ${gothicA1.variable}`}>
         {children}
+        <KakaoScript />
         <Footer />
       </body>
     </html>

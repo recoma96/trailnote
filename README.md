@@ -49,6 +49,7 @@
 | --- | --- | --- |
 | `DATA_API_BASE_URL` | O | 코스 데이터(JSON)가 있는 S3 주소. 끝에 `/`를 붙이지 않습니다. |
 | `NEXT_PUBLIC_NAVER_MAP_CLIENT_ID` | O | Naver Map API 클라이언트 ID |
+| `NEXT_PUBLIC_KAKAO_JS_KEY` | O | 카카오 디벨로퍼스 JS Key |
 
 코스 페이지는 SSG로 생성되므로, 프로덕션에서는 이 값이 **빌드할 때** 사용됩니다. 값이 없으면 빌드가 실패합니다.
 개발 서버(`npm run dev`)에서는 코스 페이지에 접속할 때마다 사용되므로 로컬 개발에도 필요합니다.
