@@ -28,7 +28,7 @@ export function CourseDetailKakaoShareButton(params: CourseDetailKakaoSharedButt
     }
     
     window.Kakao.Share.sendCustom({
-      templateId: 138987,
+      templateId: Number(process.env.NEXT_PUBLIC_KAKAO_SHARE_COURSE_DETAIL_ID),
       templateArgs: {
         introduce: params.description,
         difficulty: difficulty.label,
