@@ -56,4 +56,5 @@ export interface GetCourseResponse {
   notes: CourseDescription[];
   segments: CourseSegment[];
   locations: CourseLocation[];
+  mapLink: string;
 }

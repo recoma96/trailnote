@@ -39,6 +39,8 @@ html {
     --layerBackground: #302a1c;
     --layerBorder: #a18745;
 
+    --course-detail-address-color: #15a899;
+
     /* 라이트 모드와 같은 색상(hue)을 유지하고 채도를 낮춤.
        배경(#181611) 위 글자색과 흰 글자를 올리는 배지 배경 양쪽에서 읽히도록 밝기 조정 */
     --course-difficulty-0: #a2a29f;
