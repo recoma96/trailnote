@@ -19,12 +19,26 @@
   flex-direction: row;
   gap: 10px;
   align-items: baseline;
+  flex-wrap: wrap;            /* 좁은 화면에서는 칩이 다음 줄로 */
+  justify-content: center;
 }
 
 .course-header .addressName {
   font-family: var(--font-nanum-pen-script);
   color: var(--course-detail-address-color);
   margin: 10px 0 0 0;
+}
+
+.course-header .map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border: 1px solid var(--course-detail-address-color);
+  border-radius: 999px;       /* 알약 모양 */
+  font-size: 0.8rem;
+  color: var(--course-detail-address-color);
+  text-decoration: none;
 }
 
 
