@@ -1,4 +1,4 @@
-.main-layer {
+.course-header {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,15 +6,22 @@
   padding-top: 30px;
 }
 
-.title-marker {
+.course-header .title-marker {
   font-size: 2rem;
 }
 
-.title {
+.course-header .title {
   margin: 0 0 10px 0;
 }
 
-.address {
+.course-header .address {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.course-header .addressName {
   font-family: var(--font-nanum-pen-script);
   color: var(--course-detail-address-color);
   margin: 10px 0 0 0;
@@ -22,7 +29,7 @@
 
 
 @media (max-width: 768px) {
-  .title-marker {
+  .course-header .title-marker {
     font-size: 1.3rem;
   }
 }
